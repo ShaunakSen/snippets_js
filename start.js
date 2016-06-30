@@ -150,3 +150,21 @@ var singleVal = myArray.reduce(function(previousVal, currentVal){
 }, 100)
 
 console.log(singleVal);
+
+console.log('FILTERS.........');
+
+var newArray = myArray.filter(function(value, index, array){
+  console.log(array);
+  return value%2 === 0;
+});
+console.log(newArray);
+
+//SORT
+console.log('SORT............');
+var sortArray = [1, 12, 21, 2];
+
+sortArray.sort(function(a,b){
+  console.log(a, b);
+  return b-a;
+})
+console.log(sortArray);
