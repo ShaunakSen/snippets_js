@@ -40,7 +40,7 @@ var str2 = "1 eye for of 1 eye."
 console.log(palindrome(str2));
 
 
-console.log('Lngth of Longest word..............');
+console.log('Length of Longest word..............');
 
 function findLengthOfLongestWord(sentence){
   var sentenceArray = sentence.split(" ");
@@ -54,6 +54,9 @@ var sentence = "What is the average airspeed velocity of an unladen swallow";
 
 console.log(findLengthOfLongestWord(sentence));
 
+console.log('Title Case A Sentence.............');
+
+
 function titleCase(sentence){
   var sentence = sentence.toLowerCase();
   var sentenceArray = sentence.split(' ');
@@ -66,7 +69,6 @@ function titleCase(sentence){
 }
 
 
-console.log('Title Case A Sentence.............');
 
 var sentence = "HERE IS MY HANDLE HERE IS MY SPOUT";
 console.log(titleCase(sentence));
@@ -91,3 +93,36 @@ function largestOfFour(myArray){
 
 
 console.log(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]));
+
+
+console.log('Confirm the Ending................');
+
+function confirmEnding(str, target) {
+  var lengthOfTarget = target.length;
+  var lengthOfStr = str.length;
+  var sub = str.substring(lengthOfStr-lengthOfTarget);
+  console.log(sub);
+  if (sub == target){
+    return true;
+  }
+  else {
+    return false
+  }
+}
+
+confirmEnding("Bastian", "n");
+
+console.log("Repeat a string................");
+
+function repeatStringNumTimes(str, num) {
+  var temp = "";
+  if (num < 1){
+    return "";
+  }
+  for(var i=0; i<num; ++i){
+    temp += str;
+  }
+  return temp;
+}
+
+repeatStringNumTimes("abc", 3);
