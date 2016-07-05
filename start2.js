@@ -11,20 +11,20 @@ var pattern = /[\d\W]/g;
 var newStr = str.replace(pattern, '');
 console.log(newStr);
 
-function cleanUp(str){
+function cleanUp(str) {
   str = str.toLowerCase();
   var pattern = /[\W_]/g;
   var newStr = str.replace(pattern, '');
   return newStr;
 }
 
-function reverse(str){
+function reverse(str) {
   var stringArray = str.split('').reverse();
   var revStr = stringArray.join('');
   return revStr;
 }
 
-function palindrome(str){
+function palindrome(str) {
   var cleanStr = cleanUp(str);
   console.log('Clean string....', cleanStr);
   var revStr = reverse(cleanStr);
@@ -42,9 +42,9 @@ console.log(palindrome(str2));
 
 console.log('Length of Longest word..............');
 
-function findLengthOfLongestWord(sentence){
+function findLengthOfLongestWord(sentence) {
   var sentenceArray = sentence.split(" ");
-  sentenceArray.sort(function(prev, next){
+  sentenceArray.sort(function(prev, next) {
     return prev.length - next.length;
   });
   return sentenceArray[sentenceArray.length - 1].length;
@@ -57,10 +57,10 @@ console.log(findLengthOfLongestWord(sentence));
 console.log('Title Case A Sentence.............');
 
 
-function titleCase(sentence){
+function titleCase(sentence) {
   var sentence = sentence.toLowerCase();
   var sentenceArray = sentence.split(' ');
-  var newArray = sentenceArray.map(function(val, index){
+  var newArray = sentenceArray.map(function(val, index) {
     val = val.charAt(0).toUpperCase() + val.slice(1);
     return val;
   });
@@ -76,23 +76,28 @@ console.log(titleCase(sentence));
 
 console.log('Return Largest Numbers in Arrays.......................');
 
-function largestOfFour(myArray){
-  for (var i = 0; i < myArray.length; ++i){
+function largestOfFour(myArray) {
+  for (var i = 0; i < myArray.length; ++i) {
     var innerArray = myArray[i];
-    innerArray.sort(function(prev,next){
+    innerArray.sort(function(prev, next) {
       return next - prev;
     })
   }
 
   var finalArray = [];
-  for(var j=0; j<myArray.length; ++j){
+  for (var j = 0; j < myArray.length; ++j) {
     finalArray.push(myArray[j][0]);
   }
   return finalArray;
 }
 
 
-console.log(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]));
+console.log(largestOfFour([
+  [4, 5, 1, 3],
+  [13, 27, 18, 26],
+  [32, 35, 37, 39],
+  [1000, 1001, 857, 1]
+]));
 
 
 console.log('Confirm the Ending................');
@@ -100,12 +105,11 @@ console.log('Confirm the Ending................');
 function confirmEnding(str, target) {
   var lengthOfTarget = target.length;
   var lengthOfStr = str.length;
-  var sub = str.substring(lengthOfStr-lengthOfTarget);
+  var sub = str.substring(lengthOfStr - lengthOfTarget);
   console.log(sub);
-  if (sub == target){
+  if (sub == target) {
     return true;
-  }
-  else {
+  } else {
     return false
   }
 }
@@ -116,13 +120,50 @@ console.log("Repeat a string................");
 
 function repeatStringNumTimes(str, num) {
   var temp = "";
-  if (num < 1){
+  if (num < 1) {
     return "";
   }
-  for(var i=0; i<num; ++i){
+  for (var i = 0; i < num; ++i) {
     temp += str;
   }
   return temp;
 }
 
 repeatStringNumTimes("abc", 3);
+
+console.log('Truncating a String.............');
+
+function truncateString(str, num) {
+  length = str.length;
+  if (length <= num) {
+    return str;
+  } else if (num > 3) {
+    effectiveLength = num - 3;
+    stringToAppend = '...';
+    slicedString = str.slice(0, effectiveLength);
+    finalString = slicedString + stringToAppend;
+    return finalString;
+  } else if (num <= 3) {
+    stringToAppend = '...';
+    slicedString = str.slice(0, num);
+    finalString = slicedString + stringToAppend;
+    return finalString;
+  }
+
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 11);
+
+console.log('Chunky Monkey...........');
+
+
+function chunkArrayInGroups(arr, size) {
+  newArray = [];
+  for (var i = 0; i < arr.length; i += size) {
+    tempArray = arr.slice(i, i + size);
+    newArray.push(tempArray);
+  }
+  return newArray;
+}
+
+chunkArrayInGroups(["a", "b", "c", "d"], 3);
