@@ -197,8 +197,8 @@ function mutation(arr) {
       count[first[i]] = 1;
     }
   }
-  for(var i=0; i<second.length; ++i){
-    if(count[second[i]]==undefined){
+  for (var i = 0; i < second.length; ++i) {
+    if (count[second[i]] == undefined) {
       return false;
     }
   }
@@ -210,9 +210,9 @@ console.log(mutation(["hello", "he"]));
 
 console.log('Falsy Bouncer...............');
 
-function inArray(array, value){
-  for(var i=0; i<array.length; ++i){
-    if (array[i] === value){
+function inArray(array, value) {
+  for (var i = 0; i < array.length; ++i) {
+    if (array[i] === value) {
       return true;
     }
   }
@@ -223,7 +223,7 @@ console.log(NaN == NaN);
 
 function bouncer(arr) {
   var falseArray = [false, null, 0, "", undefined, null, NaN];
-  var arr = arr.filter(function(value, index, array){
+  var arr = arr.filter(function(value, index, array) {
     console.log(value);
     return (falseArray.indexOf(value) == -1) && (value === value);
   })
@@ -231,3 +231,90 @@ function bouncer(arr) {
 }
 
 console.log(bouncer([7, "ate", "", false, 9]));
+
+console.log('Seek and Destroy..................');
+
+function inArray(array, num) {
+  for (var i = 0; i < array.length; ++i) {
+    if (array[i] === num) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function destroyer(arr) {
+  // Remove all the values
+  var numbersToDestroy = [];
+  for (var i = 1; i < arguments.length; ++i) {
+    numbersToDestroy.push(arguments[i])
+  }
+  console.log(numbersToDestroy);
+
+  var newArray = arr.filter(function(value, index) {
+    console.log(value);
+    console.log('Comparing', value, ': ', inArray(numbersToDestroy, value));
+    return !inArray(numbersToDestroy, value);
+  })
+  console.log(newArray);
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+console.log('Where do I belong..............');
+
+function getIndexToIns(arr, num) {
+  index = -1;
+  arr.sort(function(prev, next) {
+    return prev - next;
+  });
+  arr.sort(function(prev, next) {
+    console.log(index);
+    if (num >= prev && num <= next) {
+      if (prev == num || next == num)
+        index = prev;
+      else
+        index = next;
+    }
+    return 0;
+  });
+  if (index == -1) {
+    console.log(index);
+    return arr.length.toString();
+  } else {
+    console.log(index);
+    console.log(arr);
+    console.log(arr.indexOf(index));
+    return arr.indexOf(index);
+  }
+}
+
+console.log(getIndexToIns([2, 5, 10], 15));
+
+
+console.log('Caesars Cipher..................');
+
+
+function rot13(str) { // LBH QVQ VG!
+  var newStr = "";
+  for (var i = 0; i < str.length; ++i) {
+    charCode = str[i].charCodeAt(0);
+    if(charCode >= 65 && charCode <= 90){
+      charCode -= 13;
+      if(charCode < 65){
+        diff = 65 - charCode;
+        charCode = 90 - (diff - 1);
+      }
+      newStr += String.fromCharCode(charCode)
+    }
+    else {
+      newStr += str[i];
+    }
+
+  }
+  return (newStr);
+
+}
+
+// Change the inputs below to test
+rot13("SERR YBIR?");
