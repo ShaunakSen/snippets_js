@@ -167,3 +167,67 @@ function chunkArrayInGroups(arr, size) {
 }
 
 chunkArrayInGroups(["a", "b", "c", "d"], 3);
+
+
+console.log('Slasher Flick...................');
+
+function slasher(arr, howMany) {
+  var length = arr.length;
+  if (length <= howMany) {
+    return [];
+  } else {
+    var newArray = arr.slice(-(length - howMany));
+    return newArray;
+  }
+}
+
+slasher([1, 2, 3, 4], 2);
+
+
+console.log('Mutations................');
+
+function mutation(arr) {
+  var count = {};
+  var first = arr[0].toLowerCase();
+  var second = arr[1].toLowerCase();
+  for (var i = 0; i < first.length; ++i) {
+    if (count.hasOwnProperty(first[i])) {
+      count[first[i]] += 1;
+    } else {
+      count[first[i]] = 1;
+    }
+  }
+  for(var i=0; i<second.length; ++i){
+    if(count[second[i]]==undefined){
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(mutation(["hello", "he"]));
+
+
+console.log('Falsy Bouncer...............');
+
+function inArray(array, value){
+  for(var i=0; i<array.length; ++i){
+    if (array[i] === value){
+      return true;
+    }
+  }
+  return false;
+}
+console.log(NaN == NaN);
+
+
+function bouncer(arr) {
+  var falseArray = [false, null, 0, "", undefined, null, NaN];
+  var arr = arr.filter(function(value, index, array){
+    console.log(value);
+    return (falseArray.indexOf(value) == -1) && (value === value);
+  })
+  return arr;
+}
+
+console.log(bouncer([7, "ate", "", false, 9]));
