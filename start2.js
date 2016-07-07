@@ -299,15 +299,14 @@ function rot13(str) { // LBH QVQ VG!
   var newStr = "";
   for (var i = 0; i < str.length; ++i) {
     charCode = str[i].charCodeAt(0);
-    if(charCode >= 65 && charCode <= 90){
+    if (charCode >= 65 && charCode <= 90) {
       charCode -= 13;
-      if(charCode < 65){
+      if (charCode < 65) {
         diff = 65 - charCode;
         charCode = 90 - (diff - 1);
       }
       newStr += String.fromCharCode(charCode)
-    }
-    else {
+    } else {
       newStr += str[i];
     }
 
