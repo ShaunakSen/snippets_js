@@ -8,6 +8,24 @@ body{
 
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+a { color: inherit; }
+
 .category-row{
   padding: 30px 30px;
   font-family: $font;
@@ -45,6 +63,15 @@ body{
   float: right;
   font-size: 16px;
   font-family: $font;
+}
+
+.custom-tweet{
+  float: left;
+  color: $black;
+  span{
+    font-size: 30px;
+    color: $black!important;
+  }
 }
 .random-quote{
   padding: 30px 30px;

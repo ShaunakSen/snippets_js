@@ -1,3 +1,12 @@
+function constructTweetUrl(quote, author) {
+    quote = encodeURI(quote);
+    author = encodeURI(author);
+    var tweetText = "Awesome Quote: " + quote + " by " + author;
+    document.getElementById("tweet").href = "https://twitter.com/intent/tweet?text=" + tweetText;
+
+}
+
+
 function getQuote() {
     console.log("here");
     var quote = "";
@@ -12,6 +21,7 @@ function getQuote() {
         if (author == "") {
             author = "Annonymous"
         }
+        constructTweetUrl(quote, author);
         $("#quote-text").html(quote).fadeIn(300);
         $("#quote-author").html(author).fadeIn(300);
     })
@@ -31,6 +41,7 @@ function getQuoteByCategory(category) {
             if (author == "") {
                 author = "Annonymous"
             }
+            constructTweetUrl(quote, author);
             $("#quote-text").html(quote).fadeIn(300);
             $("#quote-author").html(author).fadeIn(300);
         })
