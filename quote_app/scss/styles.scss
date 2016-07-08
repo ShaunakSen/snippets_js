@@ -3,6 +3,11 @@ $black: #222222;
 $fontQuote: "Patrick Hand", cursive;
 $font: "Montserrat", sans-serif;
 
+body{
+  background-color: #d5a5c0;
+
+}
+
 .category-row{
   padding: 30px 30px;
   font-family: $font;
@@ -14,6 +19,7 @@ $font: "Montserrat", sans-serif;
     margin-left: 10px;
     font-size: 20px;
     text-align: center;
+    cursor:pointer;
   }
 }
 
@@ -22,8 +28,8 @@ $font: "Montserrat", sans-serif;
   margin-top: 50px;
   font-family: $fontQuote;
   .quote-row-main{
+    min-height: 250px;
     padding: 20px 20px;
-    background-color: #1b6d85;
     .left-icon-row{}
     .quote-wrapper{
       font-size: 45px;
@@ -51,5 +57,6 @@ $font: "Montserrat", sans-serif;
     margin-left: 10px;
     font-size: 20px;
     text-align: center;
+    cursor: pointer;
   }
 }
