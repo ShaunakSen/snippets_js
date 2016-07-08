@@ -40,3 +40,16 @@ $font: "Montserrat", sans-serif;
   font-size: 16px;
   font-family: $font;
 }
+.random-quote{
+  padding: 30px 30px;
+  font-family: $font;
+  .new-quote-button{
+    background-color: #4cae4c;
+    color: $white;
+    font-weight: 700;
+    padding: 20px 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    text-align: center;
+  }
+}
