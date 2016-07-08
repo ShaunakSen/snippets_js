@@ -8,17 +8,32 @@ function getQuote() {
         console.log(data);
         quote = data.quoteText;
         author = data.quoteAuthor;
-        if(author == ""){
+        if (author == "") {
             author = "Annonymous"
         }
         $("#quote-text").html(quote).fadeIn(300);
         $("#quote-author").html(author).fadeIn(300);
     })
 }
+
+function getQuoteByCategory(category) {
+    if (category == "funny" || category == "love" || category == "sports" || category == "inspire") {
+        var url = "http://quotes.rest/qod.json?category=" + category;
+        $.getJSON(url, function (data) {
+            var quoteObject = data.contents.quotes[0]
+            console.log(quoteObject);
+        })
+    }
+}
+
 $(document).ready(function () {
     getQuote();
     $("#new-quote").click(function () {
         getQuote();
     });
+    $(".custom-button").click(function () {
+        var category = this.id;
+        getQuoteByCategory(category);
+    })
 
 });
