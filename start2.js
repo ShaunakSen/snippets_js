@@ -73,7 +73,6 @@ function titleCase(sentence) {
 var sentence = "HERE IS MY HANDLE HERE IS MY SPOUT";
 console.log(titleCase(sentence));
 
-
 console.log('Return Largest Numbers in Arrays.......................');
 
 function largestOfFour(myArray) {
@@ -126,6 +125,7 @@ function repeatStringNumTimes(str, num) {
   for (var i = 0; i < num; ++i) {
     temp += str;
   }
+  console.log(temp);
   return temp;
 }
 
@@ -134,22 +134,24 @@ repeatStringNumTimes("abc", 3);
 console.log('Truncating a String.............');
 
 function truncateString(str, num) {
-  length = str.length;
-  if (length <= num) {
+  var lengthOfStr = str.length;
+  if(num >= lengthOfStr)
     return str;
-  } else if (num > 3) {
-    effectiveLength = num - 3;
-    stringToAppend = '...';
-    slicedString = str.slice(0, effectiveLength);
-    finalString = slicedString + stringToAppend;
-    return finalString;
-  } else if (num <= 3) {
-    stringToAppend = '...';
-    slicedString = str.slice(0, num);
-    finalString = slicedString + stringToAppend;
-    return finalString;
+  else if (num <= 3) {
+    // length of string == num and then append ...
+    newStr = str.slice(0, num);
+    newStr += "..."
+    console.log(newStr);
+    return newStr;
   }
-
+  else{
+    // length of string + ... == num
+    var effectiveLength = num - 3;
+    var truncatedString = str.slice(0, effectiveLength);
+    truncatedString += "...";
+    console.log(truncatedString);
+    return truncatedString;
+  }
 }
 
 truncateString("A-tisket a-tasket A green and yellow basket", 11);
