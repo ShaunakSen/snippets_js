@@ -44,3 +44,19 @@ a {
     font-weight: bold;
   }
 }
+
+
+.sidebar{
+  background-color: $color3;
+  height: 700px;
+  padding: 20px 30px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $color5;
+  font-size: 1em;
+}
+.main-content{
+  padding: 20px 50px;
+  font-size: 1.3em;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $color4;
+}
