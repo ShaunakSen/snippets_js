@@ -1,1 +1,46 @@
-body{background-color: white}
+$color1: #A1E8AF;
+$color2: #94C595;
+$color3: #747C92;
+$color4: #372772;
+$color5: #3A2449;
+
+body {
+  background-color: $color1
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
+}
+
+.top-panel {
+  background-color: $color2;
+  font-size: 2.3em;
+  font-family: 'Baloo Bhai', cursive;
+  //font-weight: 500;
+  padding: 20px 0;
+  color: $color4;
+  .side-text{
+    margin-left: 10px;
+    font-size: 0.6em;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 20px 0;
+    color: $color3;
+    font-weight: bold;
+  }
+}
