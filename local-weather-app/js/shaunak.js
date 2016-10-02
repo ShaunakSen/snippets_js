@@ -5,6 +5,12 @@ var place = "";
 var humidity = 0;
 var unit = "celcius";
 
+var imageObject = {
+    Rain: "rainy_day.jpg",
+    Clouds: "cloudy.png",
+    Clear: "sunny.png"
+};
+
 
 $(document).ready(function () {
     console.log("Here");
@@ -54,16 +60,24 @@ function runAwesomeWeatherFunction(uri, latitude, longitude) {
     // Do Some Cool Stuff here
 }
 function useData(usefulStuff) {
+    console.log("useful stuff:", usefulStuff)
     temp = Math.round(usefulStuff.temp - 273);
     temp_min = Math.round(usefulStuff.temp_min - 273);
     temp_max = Math.round(usefulStuff.temp_max - 273);
     place = usefulStuff.city;
     humidity = usefulStuff.humidity;
-    $('#temp').html(temp);
+    $('#temp').html(temp + "&#8451");
     $('#place').html(place);
     $('#min_temp').html(temp_min);
     $('#max_temp').html(temp_max);
     $('#humidity').html(humidity);
+    var iconUrl = usefulStuff.icon;
+    var imageElement = document.getElementById('weather-icon');
+    imageElement.src = iconUrl;
+    console.log("Main weather is", usefulStuff.main_weather);
+    var mainWeather = usefulStuff.main_weather;
+    console.log(imageObject[mainWeather]);
+    document.getElementById('main-image').src = "img/" + imageObject[mainWeather];
 }
 
 function filterAPIResult(response) {
@@ -75,6 +89,7 @@ function filterAPIResult(response) {
         city: "",
         countryCode: "",
         weather: "",
+        main_weather: "",
         icon: ""
     };
 
@@ -85,6 +100,7 @@ function filterAPIResult(response) {
     usefulStuff.city = response.name;
     usefulStuff.countryCode = response.sys.country;
     usefulStuff.weather = response.weather[0].description;
+    usefulStuff.main_weather = response.weather[0].main;
     usefulStuff.icon = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
     return usefulStuff;
 }
