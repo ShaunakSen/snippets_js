@@ -1,3 +1,9 @@
+var temp = 0;
+var temp_min = 0;
+var temp_max = 0;
+var place = "";
+
+
 $(document).ready(function () {
     console.log("Here");
     var apiUrl = "http://api.openweathermap.org/data/2.5/weather";
@@ -37,7 +43,45 @@ function buildURI(apiUrl, paramsObject) {
 
 function runAwesomeWeatherFunction(uri, latitude, longitude) {
     // ISSUE GET REQUEST TO uri
-    // GET RESULTS
+    $.getJSON(uri, function (response) {
+        console.log(response);
+        var usefulStuff = filterAPIResult(response);
+        console.log(usefulStuff);
+        useData(usefulStuff);
+    });
+
     // Do Some Cool Stuff here
-    return;
+}
+function useData(usefulStuff) {
+    temp = usefulStuff.temp;
+    temp_min = usefulStuff.temp_min;
+    temp_max = usefulStuff.temp_max;
+    place = usefulStuff.city;
+    $('#temp').html(temp);
+    $('#place').html(place);
+}
+
+function filterAPIResult(response) {
+    var usefulStuff = {
+        temp: 0,
+        temp_min: 0,
+        temp_max: 0,
+        humidity: 0,
+        city: "",
+        countryCode: "",
+        weather: "",
+        icon: ""
+    };
+
+    usefulStuff.temp = response.main.temp;
+    usefulStuff.temp_min = response.main.temp_min;
+    usefulStuff.temp_max = response.main.temp_max;
+    usefulStuff.humidity = response.main.humidity;
+    usefulStuff.city = response.name;
+    usefulStuff.countryCode = response.sys.country;
+    usefulStuff.weather = response.weather[0].description;
+    usefulStuff.icon = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+    return usefulStuff;
+
+
 }
