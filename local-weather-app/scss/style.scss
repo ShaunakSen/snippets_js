@@ -3,6 +3,7 @@ $color2: #94C595;
 $color3: #747C92;
 $color4: #372772;
 $color5: #3A2449;
+$color6: #664280;
 
 body {
   background-color: $color1
@@ -53,10 +54,28 @@ a {
   font-family: 'Source Sans Pro', sans-serif;
   color: $color5;
   font-size: 1em;
+
+  .toggleButton{
+    background-color: $color2;
+    font-size: 1.2em;
+    -webkit-border-radius:2em;
+    -moz-border-radius:2em;
+    border-radius:2em;
+    cursor: pointer;
+  }
 }
 .main-content{
   padding: 20px 50px;
   font-size: 1.3em;
   font-family: 'Source Sans Pro', sans-serif;
   color: $color4;
+
+  .second-row{
+    p{
+      color: $color6;
+      font-size: 0.8em;
+    }
+
+    //margin-left: 1.5em;
+  }
 }

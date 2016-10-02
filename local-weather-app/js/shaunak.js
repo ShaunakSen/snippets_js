@@ -2,6 +2,8 @@ var temp = 0;
 var temp_min = 0;
 var temp_max = 0;
 var place = "";
+var humidity = 0;
+var unit = "celcius";
 
 
 $(document).ready(function () {
@@ -18,6 +20,7 @@ $(document).ready(function () {
                 lat: latitude,
                 appid: apiKey
             };
+            console.log("Params:", params);
             var uri = buildURI(apiUrl, params);
             runAwesomeWeatherFunction(uri, latitude, longitude);
         });
@@ -26,8 +29,6 @@ $(document).ready(function () {
 function buildURI(apiUrl, paramsObject) {
     // apiUrl?lat=23.545124899999998&lon=87.2888306&appid=547d9f52bb54d39030737cbfd6533b58
     var uri = apiUrl;
-    console.log(paramsObject);
-    console.log(Object.keys(paramsObject));
     var keys = Object.keys(paramsObject);
     for (var i = 0; i < keys.length; ++i) {
         if (i == 0) {
@@ -53,12 +54,16 @@ function runAwesomeWeatherFunction(uri, latitude, longitude) {
     // Do Some Cool Stuff here
 }
 function useData(usefulStuff) {
-    temp = usefulStuff.temp;
-    temp_min = usefulStuff.temp_min;
-    temp_max = usefulStuff.temp_max;
+    temp = Math.round(usefulStuff.temp - 273);
+    temp_min = Math.round(usefulStuff.temp_min - 273);
+    temp_max = Math.round(usefulStuff.temp_max - 273);
     place = usefulStuff.city;
+    humidity = usefulStuff.humidity;
     $('#temp').html(temp);
     $('#place').html(place);
+    $('#min_temp').html(temp_min);
+    $('#max_temp').html(temp_max);
+    $('#humidity').html(humidity);
 }
 
 function filterAPIResult(response) {
@@ -82,6 +87,7 @@ function filterAPIResult(response) {
     usefulStuff.weather = response.weather[0].description;
     usefulStuff.icon = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
     return usefulStuff;
-
-
 }
+
+
+
