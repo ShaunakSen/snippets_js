@@ -5,12 +5,6 @@ var place = "";
 var humidity = 0;
 var unit = "celcius";
 
-var imageObject = {
-    Rain: "rainy_day.jpg",
-    Clouds: "cloudy.png",
-    Clear: "sunny.png"
-};
-
 
 $(document).ready(function () {
     console.log("Here");
@@ -72,23 +66,17 @@ function useData(usefulStuff) {
     $('#temp').html(temp + "&#8451");
     $('#place').html(place);
     getCountryName(usefulStuff.countryCode);
-    $('#min_temp').html(temp_min);
-    $('#max_temp').html(temp_max);
     $('#humidity').html(humidity);
     var iconUrl = usefulStuff.icon;
     var imageElement = document.getElementById('weather-icon');
     imageElement.src = iconUrl;
     console.log("Main weather is", usefulStuff.main_weather);
     var mainWeather = usefulStuff.main_weather;
-    console.log(imageObject[mainWeather]);
-    document.getElementById('main-image').src = "img/" + imageObject[mainWeather];
-    getQuote(mainWeather);
+    getQuoteAndImage(mainWeather);
 }
 
 
-
-
-function getQuote(mainWeather) {
+function getQuoteAndImage(mainWeather) {
     $.getJSON("https://api.myjson.com/bins/26c5s", function (quotes) {
         console.log("Quotes:", quotes.quotes[mainWeather]);
         var quotesArray = quotes.quotes[mainWeather];
@@ -96,6 +84,8 @@ function getQuote(mainWeather) {
         var randomQuote = quotesArray[Math.round(randomNo)];
         console.log(randomQuote);
         $('#quote').html(randomQuote);
+        var image = quotes.images[mainWeather];
+        document.getElementById('main-image').src = "img/" + image;
     });
 }
 

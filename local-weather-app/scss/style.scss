@@ -45,7 +45,7 @@ a:hover{
     font-size: 0.6em;
     font-family: 'Source Sans Pro', sans-serif;
     padding: 20px 0;
-    color: $color3;
+    color: $color6;
     font-weight: bold;
   }
 }
@@ -57,12 +57,11 @@ a:hover{
   padding: 20px 30px;
   font-family: 'Source Sans Pro', sans-serif;
   color: $color5;
-  font-size: 1em;
+  font-size: 1.2em;
 
   .toggleButton{
     background-color: $color5;
     color: $color2;
-    font-size: 1.2em;
     -webkit-border-radius:2em;
     -moz-border-radius:2em;
     border-radius:2em;
@@ -85,6 +84,9 @@ a:hover{
   font-size: 1.3em;
   font-family: 'Source Sans Pro', sans-serif;
   color: $color4;
+  i{
+    color: $color6;
+  }
 
   .second-row{
     p{
@@ -100,4 +102,12 @@ a:hover{
     font-style: italic;
     font-size: 1.2em;
   }
+}
+
+.img-circle{
+  border: 5px solid $color2;
+}
+#place, #country, #temp{
+  color: $color6;
+  font-weight: bold;
 }
