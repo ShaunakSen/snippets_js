@@ -28,6 +28,10 @@ a:active {
 a {
   color: inherit;
 }
+a:hover{
+  text-decoration: none;
+  color: inherit;
+}
 
 .top-panel {
   background-color: $color2;
@@ -56,12 +60,24 @@ a {
   font-size: 1em;
 
   .toggleButton{
-    background-color: $color2;
+    background-color: $color5;
+    color: $color2;
     font-size: 1.2em;
     -webkit-border-radius:2em;
     -moz-border-radius:2em;
     border-radius:2em;
     cursor: pointer;
+  }
+  .code-icon{
+    font-size: 1.2em;
+    margin: 5px;
+    font-weight: bold;
+  }
+  .icon-row{
+    i{
+      font-size: 1.2em;
+      margin: 10px;
+    }
   }
 }
 .main-content{

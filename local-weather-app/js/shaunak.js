@@ -31,6 +31,9 @@ $(document).ready(function () {
             runAwesomeWeatherFunction(uri, latitude, longitude);
         });
     }
+    $('#toggleButton').click(function () {
+        toggleUnit();
+    })
 });
 function buildURI(apiUrl, paramsObject) {
     // apiUrl?lat=23.545124899999998&lon=87.2888306&appid=547d9f52bb54d39030737cbfd6533b58
@@ -60,7 +63,7 @@ function runAwesomeWeatherFunction(uri, latitude, longitude) {
     // Do Some Cool Stuff here
 }
 function useData(usefulStuff) {
-    console.log("useful stuff:", usefulStuff)
+    console.log("useful stuff:", usefulStuff);
     temp = Math.round(usefulStuff.temp - 273);
     temp_min = Math.round(usefulStuff.temp_min - 273);
     temp_max = Math.round(usefulStuff.temp_max - 273);
@@ -68,6 +71,7 @@ function useData(usefulStuff) {
     humidity = usefulStuff.humidity;
     $('#temp').html(temp + "&#8451");
     $('#place').html(place);
+    getCountryName(usefulStuff.countryCode);
     $('#min_temp').html(temp_min);
     $('#max_temp').html(temp_max);
     $('#humidity').html(humidity);
@@ -82,11 +86,13 @@ function useData(usefulStuff) {
 }
 
 
+
+
 function getQuote(mainWeather) {
     $.getJSON("https://api.myjson.com/bins/26c5s", function (quotes) {
         console.log("Quotes:", quotes.quotes[mainWeather]);
         var quotesArray = quotes.quotes[mainWeather];
-        var randomNo = getRandomArbitrary(0, quotesArray.length-1);
+        var randomNo = getRandomArbitrary(0, quotesArray.length - 1);
         var randomQuote = quotesArray[Math.round(randomNo)];
         console.log(randomQuote);
         $('#quote').html(randomQuote);
@@ -118,7 +124,38 @@ function filterAPIResult(response) {
     return usefulStuff;
 }
 
+
+function getCountryName(code) {
+    $.getJSON("https://restcountries.eu/rest/v1/alpha/"+code, function (response) {
+        var countryName = response.name;
+        $('#country').html(countryName);
+    })
+}
+
+
 function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+function celciusToFarenheit(cel) {
+    // (f-32)/9 = c/5
+    return Math.round(((cel / 5.0) * 9) + 32);
+}
+function farenheitToCelecius(far) {
+    return Math.round(5 * ((far - 32.0) / 9.0));
+}
+
+function toggleUnit() {
+    if (unit == "celcius") {
+        temp = celciusToFarenheit(temp);
+        unit = "farenheit";
+        $('#temp').html(temp + "&deg; F");
+        $('#toggleButton').html("Change Unit to Celcius");
+    }
+    else if (unit == "farenheit") {
+        temp = farenheitToCelecius(temp);
+        unit = "celcius";
+        $('#temp').html(temp + "&deg; C");
+        $('#toggleButton').html("Change Unit to Farenheit");
+    }
+}
