@@ -78,6 +78,19 @@ function useData(usefulStuff) {
     var mainWeather = usefulStuff.main_weather;
     console.log(imageObject[mainWeather]);
     document.getElementById('main-image').src = "img/" + imageObject[mainWeather];
+    getQuote(mainWeather);
+}
+
+
+function getQuote(mainWeather) {
+    $.getJSON("https://api.myjson.com/bins/26c5s", function (quotes) {
+        console.log("Quotes:", quotes.quotes[mainWeather]);
+        var quotesArray = quotes.quotes[mainWeather];
+        var randomNo = getRandomArbitrary(0, quotesArray.length-1);
+        var randomQuote = quotesArray[Math.round(randomNo)];
+        console.log(randomQuote);
+        $('#quote').html(randomQuote);
+    });
 }
 
 function filterAPIResult(response) {
@@ -105,5 +118,7 @@ function filterAPIResult(response) {
     return usefulStuff;
 }
 
-
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
