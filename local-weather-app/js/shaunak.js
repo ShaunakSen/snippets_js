@@ -10,24 +10,22 @@ $(document).ready(function () {
     console.log("Here");
     var apiUrl = "http://api.openweathermap.org/data/2.5/weather";
     var apiKey = "547d9f52bb54d39030737cbfd6533b58";
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            console.log("Latitude:", position.coords.latitude, "Longitude:", position.coords.longitude);
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            var params = {
-                lon: longitude,
-                lat: latitude,
-                appid: apiKey
-            };
-            console.log("Params:", params);
-            var uri = buildURI(apiUrl, params);
-            runAwesomeWeatherFunction(uri, latitude, longitude);
-        });
-    }
-    $('#toggleButton').click(function () {
-        toggleUnit();
+    $.getJSON("http://ip-api.com/json", function (data) {
+        var latitude = data.lat;
+        var longitude = data.lon;
+        var params = {
+            lon: longitude,
+            lat: latitude,
+            appid: apiKey
+        };
+        console.log("Params:", params);
+        var uri = buildURI(apiUrl, params);
+        runAwesomeWeatherFunction(uri, latitude, longitude);
+        $('#toggleButton').click(function () {
+            toggleUnit();
+        })
     })
+
 });
 function buildURI(apiUrl, paramsObject) {
     // apiUrl?lat=23.545124899999998&lon=87.2888306&appid=547d9f52bb54d39030737cbfd6533b58
@@ -77,15 +75,14 @@ function useData(usefulStuff) {
 
 
 function getQuoteAndImage(mainWeather) {
-    $.getJSON("https://api.myjson.com/bins/26c5s", function (quotes) {
+    $.getJSON("https://api.myjson.com/bins/3yyjs", function (quotes) {
         console.log("Quotes:", quotes.quotes[mainWeather]);
         var quotesArray = quotes.quotes[mainWeather];
         var randomNo = getRandomArbitrary(0, quotesArray.length - 1);
         var randomQuote = quotesArray[Math.round(randomNo)];
         console.log(randomQuote);
         $('#quote').html(randomQuote);
-        var image = quotes.images[mainWeather];
-        document.getElementById('main-image').src = "img/" + image;
+        document.getElementById('main-image').src = quotes.images[mainWeather];
     });
 }
 
@@ -116,7 +113,7 @@ function filterAPIResult(response) {
 
 
 function getCountryName(code) {
-    $.getJSON("https://restcountries.eu/rest/v1/alpha/"+code, function (response) {
+    $.getJSON("https://restcountries.eu/rest/v1/alpha/" + code, function (response) {
         var countryName = response.name;
         $('#country').html(countryName);
     })
