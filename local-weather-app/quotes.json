@@ -1,0 +1,24 @@
+{
+  "quotes": {
+    "Rain": [
+      "Rainy days are perfect days to cuddle and watch movies",
+      "A rainy day is a special gift to readers - Amy Miles",
+      "Let a smile be your umbrella on a rainy day"
+    ],
+    "Clouds": [
+      "A cloudy day is no match for a sunny disposition - William Arthur Ward",
+      "Sometimes we get to be the sunshine on someone's cloudy day",
+      "What does the sun do on a cloudy day? - Jackie DeShammon"
+    ],
+    "Clear": [
+      "Happiness is a Sunny Day !!",
+      "Look at the sunny side of everything..Have a good day",
+      "Go outside and get some Sunshine!!"
+    ]
+  },
+  "images": {
+    "Rain": "https://s14.postimg.org/b52533xe9/rainy_day.jpg",
+    "Clouds": "https://s14.postimg.org/ghqzh8lap/cloudy.jpg",
+    "Clear": "https://s14.postimg.org/vy4jripxt/sunny.jpg"
+  }
+}
