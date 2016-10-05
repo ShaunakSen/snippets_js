@@ -98,13 +98,25 @@ a:hover {
       border-bottom: 1px solid #a2a9af; }
       .main-content .article-card .article-heading p {
         margin-left: 20px; }
+      .main-content .article-card .article-heading span {
+        float: right;
+        margin-right: 20px; }
     .main-content .article-card .article-body {
       padding: 10px;
       color: #3A2449;
       font-size: 0.9em;
       border-bottom: 1px solid #a2a9af; }
-    .main-content .article-card p {
-      margin-left: 20px; }
+      .main-content .article-card .article-body p {
+        margin-left: 20px;
+        text-align: justify;
+        margin-right: 20px; }
+    .main-content .article-card .article-footer {
+      padding: 10px;
+      color: #3A2449;
+      font-size: 0.9em;
+      border-bottom: 1px solid #a2a9af; }
+      .main-content .article-card .article-footer p {
+        margin-left: 20px; }
 
 .img-circle {
   border: 5px solid #ebedec; }

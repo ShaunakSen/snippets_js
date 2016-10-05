@@ -131,16 +131,33 @@ a:hover {
       p{
         margin-left: 20px;
       }
+      span{
+        float: right;
+        margin-right: 20px;
+
+      }
     }
     .article-body{
       padding: 10px;
       color: $color5;
       font-size: 0.9em;
       border-bottom: 1px solid $color1;
+      p{
+        margin-left: 20px;
+        text-align: justify;
+        margin-right: 20px;
+      }
     }
-    p{
-      margin-left: 20px;
+    .article-footer{
+      padding: 10px;
+      color: $color5;
+      font-size: 0.9em;
+      border-bottom: 1px solid $color1;
+      p{
+        margin-left: 20px;
+      }
     }
+
 
   }
 

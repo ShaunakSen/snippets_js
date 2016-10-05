@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="wikipediaApp">
 <head>
     <meta charset="UTF-8">
     <title>Quotes</title>
     <script src="https://use.fontawesome.com/b7f499e08c.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Baloo+Bhai|Source+Sans+Pro:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Baloo+Bhai|Source+Sans+Pro:400i"
+          rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="scss/styles.css">
@@ -24,7 +25,8 @@
         <br>
         <p>Created as part of <a href="https://www.freecodecamp.com/">FreeCodeCamp Project</a></p>
         <p>Get the <i class="code-icon fa fa-code"></i>
-            <a href="https://github.com/ShaunakSen/snippets_js/tree/master/local-weather-app" target="_blank"><b>here</b></a>
+            <a href="https://github.com/ShaunakSen/snippets_js/tree/master/local-weather-app"
+               target="_blank"><b>here</b></a>
         </p>
         <p class="icon-row">
             <a href="https://www.facebook.com/shaunak.sen.54" target="_blank"><i class="fa fa-facebook-f"></i></a>
@@ -34,7 +36,7 @@
         <br>
     </div>
 
-    <div class="col-sm-9 main-content">
+    <div class="col-sm-9 main-content" ng-controller="MainController">
         <div class="row text-center">
             <div class="col-xs-6" style="padding: 0">
                 <input type="text" class="form-control search-text-field" placeholder="SEARCH HERE">
@@ -44,18 +46,27 @@
             </div>
             <div class="col-xs-3"></div>
         </div>
-        <div class="row article-card">
-            <div class="row article-heading">
-                <p>Article Heading</p>
-            </div>
-            <div class="row article-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta facere ipsam sit voluptatum. Ab aliquam dignissimos ea excepturi explicabo labore necessitatibus, obcaecati quos recusandae tempora vel vero voluptates.</p>
+        <div class="row">
+            <div class="col-xs-9 article-card">
+                <div class="row article-heading">
+                    <p>Article Heading <span><a href=""><i class="fa fa-link"></i></a></span></p>
+                </div>
+                <div class="row article-body">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta facere ipsam sit
+                        voluptatum. Ab aliquam dignissimos ea excepturi explicabo labore necessitatibus, obcaecati quos
+                        recusandae tempora vel vero voluptates.</p>
+                </div>
+                <div class="row article-footer">
+                    <p>For more details click <a href=""><b>Here</b></a></p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/shaunak.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
