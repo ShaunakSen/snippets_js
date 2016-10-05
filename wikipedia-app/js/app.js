@@ -1,22 +1,63 @@
-var myApp = angular.module('wikipediaApp',[]);
+var myApp = angular.module('wikipediaApp', []);
+
 myApp.controller('MainController', ['$scope', 'mainService', function ($scope, mainService) {
-    console.log(mainService.getURI());
+    $scope.searchText = "brad"
+    $scope.usefulStuff = {};
+    $scope.searchText = "";
+    $scope.queryNumber = 10;
+    $scope.search = function () {
+        mainService.getData($scope.searchText, $scope.queryNumber).then(function (response) {
+            console.log(response);
+            $scope.usefulStuff = cleanUp(response);
+            console.log($scope.usefulStuff);
+        });
+    };
+    function cleanUp(response) {
+        var usefulStuff = {
+            articles: []
+        };
+        headingList = [];
+        bodyList = [];
+        urlList = [];
+        console.log("Response from API", response.data);
+        for (var i = 0; i < response.data[1].length; ++i) {
+            var heading = response.data[1][i];
+            headingList.push(heading);
+
+            var body = response.data[2][i];
+            bodyList.push(body);
+
+            var url = response.data[3][i];
+            urlList.push(url);
+        }
+        var articleList = [];
+        for (var x = 0; x < headingList.length; ++x) {
+            var articleObject = {
+            };
+            articleObject.heading = headingList[x];
+            articleObject.body = bodyList[x];
+            articleObject.link = urlList[x];
+            articleList.push(articleObject);
+        }
+        usefulStuff.articles = articleList;
+        return usefulStuff;
+    }
+
 }]);
 
 myApp.service('mainService', ['$http', function ($http) {
-    var params = {
-        action: 'opensearch',
-        search: 'sachin',
-        limit: 10,
-        namespace: 0,
-        format: 'json'
-    };
-    var apiUrl = "https://en.wikipedia.org/w/api.php";
-    var uri = buildURI(apiUrl, params);
-    console.log(uri);
-    this.getURI = function () {
-        return uri;
-    };
+    this.getData = function (searchText, queryNumber) {
+        var params = {
+            action: 'opensearch',
+            search: searchText,
+            limit: queryNumber,
+            namespace: 0,
+            callback: 'JSON_CALLBACK'
+        };
+        var apiUrl = "https://en.wikipedia.org/w/api.php";
+        var uri = buildURI(apiUrl, params);
+        return $http.jsonp(uri);
+    }
 }]);
 
 function buildURI(apiUrl, paramsObject) {

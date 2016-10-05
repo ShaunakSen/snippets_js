@@ -38,10 +38,13 @@
 
     <div class="col-sm-9 main-content" ng-controller="MainController">
         <div class="row text-center">
-            <div class="col-xs-6" style="padding: 0">
-                <input type="text" class="form-control search-text-field" placeholder="SEARCH HERE">
+            <div class="col-xs-4" style="padding: 0">
+                <input type="text" class="form-control search-text-field" ng-model="searchText" placeholder="SEARCH HERE">
             </div>
-            <div class="col-xs-2 search-button">
+            <div class="col-xs-3" style="padding: 0; margin-left: 5px">
+                <input type="number" class="form-control search-text-field" min="1" max="10" ng-model="queryNumber" placeholder="10 RESULTS">
+            </div>
+            <div class="col-xs-2 search-button" ng-click="search()">
                 Search
             </div>
             <div class="col-xs-3"></div>
