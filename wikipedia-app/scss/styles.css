@@ -1,0 +1,112 @@
+body {
+  background-color: #a2a9af; }
+
+a:link {
+  text-decoration: none; }
+
+a:visited {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+a:active {
+  text-decoration: none; }
+
+a {
+  color: inherit; }
+
+a:hover {
+  text-decoration: none;
+  color: inherit; }
+
+.top-panel {
+  background-color: #ebedec;
+  font-size: 2.3em;
+  font-family: 'Baloo Bhai', cursive;
+  padding: 20px 0;
+  color: #4c5870; }
+  .top-panel .side-text {
+    margin-left: 10px;
+    font-size: 0.6em;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 20px 0;
+    color: #664280;
+    font-weight: bold; }
+
+.sidebar {
+  background-color: #747C92;
+  height: 700px;
+  padding: 20px 30px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #3A2449;
+  font-size: 1.2em; }
+  .sidebar .toggleButton {
+    background-color: #3A2449;
+    color: #ebedec;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+    cursor: pointer; }
+  .sidebar .code-icon {
+    font-size: 1.2em;
+    margin: 5px;
+    font-weight: bold; }
+  .sidebar .icon-row i {
+    font-size: 1.2em;
+    margin: 10px; }
+
+.main-content {
+  padding: 20px 50px;
+  font-size: 1.3em;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #4c5870; }
+  .main-content i {
+    color: #664280; }
+  .main-content .search-text-field {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: #ebedec;
+    font-family: "Source Code Pro",sans-serif;
+    color: #664280;
+    letter-spacing: 1px; }
+  .main-content .search-text-field:focus {
+    outline: none;
+    border: none;
+    box-shadow: none; }
+  .main-content .search-button {
+    background-color: #4c5870;
+    text-align: center;
+    font-size: 1.1em;
+    color: #ebedec;
+    padding: 3px;
+    letter-spacing: 1px;
+    font-family: 'Baloo Bhai', cursive; }
+  .main-content .article-card {
+    background-color: #ebedec;
+    margin-top: 20px;
+    padding: 0; }
+    .main-content .article-card .article-heading {
+      padding: 10px;
+      font-weight: bold;
+      color: #3A2449;
+      font-size: 1em;
+      border-bottom: 1px solid #a2a9af; }
+      .main-content .article-card .article-heading p {
+        margin-left: 20px; }
+    .main-content .article-card .article-body {
+      padding: 10px;
+      color: #3A2449;
+      font-size: 0.9em;
+      border-bottom: 1px solid #a2a9af; }
+    .main-content .article-card p {
+      margin-left: 20px; }
+
+.img-circle {
+  border: 5px solid #ebedec; }
+
+/*# sourceMappingURL=styles.css.map */

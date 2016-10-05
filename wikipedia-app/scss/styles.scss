@@ -1,0 +1,152 @@
+$color1: #a2a9af;
+$color2: #ebedec;
+$color3: #747C92;
+$color4: #4c5870;
+$color5: #3A2449;
+$color6: #664280;
+
+body {
+  background-color: $color1
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.top-panel {
+  background-color: $color2;
+  font-size: 2.3em;
+  font-family: 'Baloo Bhai', cursive;
+  //font-weight: 500;
+  padding: 20px 0;
+  color: $color4;
+  .side-text {
+    margin-left: 10px;
+    font-size: 0.6em;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 20px 0;
+    color: $color6;
+    font-weight: bold;
+  }
+}
+
+.sidebar {
+  background-color: $color3;
+  height: 700px;
+  padding: 20px 30px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $color5;
+  font-size: 1.2em;
+
+  .toggleButton {
+    background-color: $color5;
+    color: $color2;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+    cursor: pointer;
+  }
+  .code-icon {
+    font-size: 1.2em;
+    margin: 5px;
+    font-weight: bold;
+  }
+  .icon-row {
+    i {
+      font-size: 1.2em;
+      margin: 10px;
+    }
+  }
+}
+
+.main-content {
+  padding: 20px 50px;
+  font-size: 1.3em;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: $color4;
+  i {
+    color: $color6;
+  }
+
+  .search-text-field {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: $color2;
+    font-family: "Source Code Pro",sans-serif;
+    color: $color6;
+    letter-spacing: 1px;
+  }
+  .search-text-field:focus{
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+  .search-button{
+    background-color: $color4;
+    text-align: center;
+    font-size: 1.1em;
+    color: $color2;
+    padding: 3px;
+    //font-weight: bold;
+    letter-spacing: 1px;
+    font-family: 'Baloo Bhai', cursive;
+  }
+
+  .article-card{
+    background-color: $color2;
+    margin-top: 20px;
+    padding: 0;
+
+    .article-heading{
+      padding: 10px;
+      font-weight: bold;
+      color: $color5;
+      font-size: 1em;
+      border-bottom: 1px solid $color1;
+      p{
+        margin-left: 20px;
+      }
+    }
+    .article-body{
+      padding: 10px;
+      color: $color5;
+      font-size: 0.9em;
+      border-bottom: 1px solid $color1;
+    }
+    p{
+      margin-left: 20px;
+    }
+
+  }
+
+}
+
+.img-circle {
+  border: 5px solid $color2;
+}
+

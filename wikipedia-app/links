@@ -1,0 +1,3 @@
+https://en.wikipedia.org/w/api.php?action=query&prop=info&pageids=1126607&inprop=url
+https://en.wikipedia.org/w/api.php?action=query&titles=Sachin%20Tendulkar&prop=revisions&rvprop=content&format=jsonfm
+https://en.wikipedia.org/w/api.php?action=opensearch&search=world+cup&limit=10&namespace=0&format=jsonfm
