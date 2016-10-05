@@ -43,7 +43,7 @@ a:hover {
   font-size: 1.2em; }
   .sidebar .toggleButton {
     background-color: #3A2449;
-    color: #ebedec;
+    color: #a2a9af;
     -webkit-border-radius: 2em;
     -moz-border-radius: 2em;
     border-radius: 2em;
@@ -87,7 +87,8 @@ a:hover {
     color: #ebedec;
     padding: 3px;
     letter-spacing: 1px;
-    font-family: 'Baloo Bhai', cursive; }
+    font-family: 'Baloo Bhai', cursive;
+    cursor: pointer; }
   .main-content .article-card {
     background-color: #ebedec;
     margin-top: 20px;

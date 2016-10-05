@@ -61,7 +61,7 @@ a:hover {
 
   .toggleButton {
     background-color: $color5;
-    color: $color2;
+    color: $color1;
     -webkit-border-radius: 2em;
     -moz-border-radius: 2em;
     border-radius: 2em;
@@ -118,6 +118,7 @@ a:hover {
     //font-weight: bold;
     letter-spacing: 1px;
     font-family: 'Baloo Bhai', cursive;
+    cursor: pointer;
   }
 
   .article-card{

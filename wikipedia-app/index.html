@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="wikipediaApp">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Quotes</title>
@@ -7,11 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro|Baloo+Bhai|Source+Sans+Pro:400i"
           rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="scss/styles.css">
 </head>
-<body>
+<body ng-app="wikipediaApp">
 <div class="row top-panel">
     <div class="col-xs-12 text-center">
         Wikipedia Viewer App <span class="side-text"><i>by Shaunak Sen</i></span>
@@ -25,7 +25,7 @@
         <br>
         <p>Created as part of <a href="https://www.freecodecamp.com/">FreeCodeCamp Project</a></p>
         <p>Get the <i class="code-icon fa fa-code"></i>
-            <a href="https://github.com/ShaunakSen/snippets_js/tree/master/local-weather-app"
+            <a href="https://github.com/ShaunakSen/snippets_js/tree/master/wikipedia-app"
                target="_blank"><b>here</b></a>
         </p>
         <p class="icon-row">
@@ -33,7 +33,11 @@
             <a href="https://github.com/ShaunakSen" target="_blank"><i class="fa fa-github"></i></a>
             <a href="http://codepen.io/shaunak1105/" target="_blank"><i class="fa fa-codepen"></i></a>
         </p>
-        <br>
+        <div class="toggleButton">
+            <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+                Click here for a random article
+            </a>
+        </div>
     </div>
 
     <div class="col-sm-9 main-content" ng-controller="MainController">
@@ -70,9 +74,9 @@
         </div>
     </div>
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.11/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
 <script src="js/app.js"></script>
 </body>

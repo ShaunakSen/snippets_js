@@ -7,6 +7,7 @@ myApp.controller('MainController', ['$scope', 'mainService', function ($scope, m
     $scope.queryNumber = 4;
     $scope.showLoading = false;
     $scope.search = function () {
+        if($scope.searchText.trim() == ""){return;}
         $scope.showLoading = true;
         mainService.getData($scope.searchText, $scope.queryNumber).then(function (response) {
             console.log(response);
