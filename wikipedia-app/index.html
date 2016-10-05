@@ -49,18 +49,16 @@
             </div>
             <div class="col-xs-3"></div>
         </div>
-        <div class="row">
+        <div class="row" ng-repeat="article in usefulStuff.articles">
             <div class="col-xs-9 article-card">
                 <div class="row article-heading">
-                    <p>Article Heading <span><a href=""><i class="fa fa-link"></i></a></span></p>
+                    <p>{{article.heading}} <span><a href="{{article.link}}" target="_blank"><i class="fa fa-link"></i></a></span></p>
                 </div>
                 <div class="row article-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque deleniti dicta facere ipsam sit
-                        voluptatum. Ab aliquam dignissimos ea excepturi explicabo labore necessitatibus, obcaecati quos
-                        recusandae tempora vel vero voluptates.</p>
+                    <p>{{article.body}}</p>
                 </div>
                 <div class="row article-footer">
-                    <p>For more details click <a href=""><b>Here</b></a></p>
+                    <p>For more details click <a href="{{article.link}}" target="_blank"><b>Here</b></a></p>
                 </div>
             </div>
         </div>

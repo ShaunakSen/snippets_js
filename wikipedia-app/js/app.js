@@ -1,10 +1,10 @@
 var myApp = angular.module('wikipediaApp', []);
 
 myApp.controller('MainController', ['$scope', 'mainService', function ($scope, mainService) {
-    $scope.searchText = "brad"
+    $scope.searchText = "brad";
     $scope.usefulStuff = {};
     $scope.searchText = "";
-    $scope.queryNumber = 10;
+    $scope.queryNumber = 4;
     $scope.search = function () {
         mainService.getData($scope.searchText, $scope.queryNumber).then(function (response) {
             console.log(response);
