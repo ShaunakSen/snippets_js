@@ -5,11 +5,14 @@ myApp.controller('MainController', ['$scope', 'mainService', function ($scope, m
     $scope.usefulStuff = {};
     $scope.searchText = "";
     $scope.queryNumber = 4;
+    $scope.showLoading = false;
     $scope.search = function () {
+        $scope.showLoading = true;
         mainService.getData($scope.searchText, $scope.queryNumber).then(function (response) {
             console.log(response);
             $scope.usefulStuff = cleanUp(response);
             console.log($scope.usefulStuff);
+            $scope.showLoading = false;
         });
     };
     function cleanUp(response) {

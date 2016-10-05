@@ -63,6 +63,8 @@ a:hover {
   color: #4c5870; }
   .main-content i {
     color: #664280; }
+  .main-content .spinner {
+    color: #4c5870; }
   .main-content .search-text-field {
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
