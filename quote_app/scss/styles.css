@@ -1,0 +1,70 @@
+body {
+  background-color: #d5a5c0; }
+
+a:link {
+  text-decoration: none; }
+
+a:visited {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+a:active {
+  text-decoration: none; }
+
+a {
+  color: inherit; }
+
+.category-row {
+  padding: 30px 30px;
+  font-family: "Montserrat", sans-serif; }
+  .category-row .custom-button {
+    background-color: #4cae4c;
+    color: #f5f5f5;
+    font-weight: 700;
+    padding: 20px 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer; }
+
+.quote-row {
+  padding: 30px 30px;
+  margin-top: 50px;
+  font-family: "Patrick Hand", cursive; }
+  .quote-row .quote-row-main {
+    min-height: 250px;
+    padding: 20px 20px; }
+    .quote-row .quote-row-main .quote-wrapper {
+      font-size: 45px;
+      color: #f5f5f5;
+      font-weight: 700;
+      text-align: center; }
+
+.small-text {
+  float: right;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif; }
+
+.custom-tweet {
+  float: left;
+  color: #222222; }
+  .custom-tweet span {
+    font-size: 30px;
+    color: #222222 !important; }
+
+.random-quote {
+  padding: 30px 30px;
+  font-family: "Montserrat", sans-serif; }
+  .random-quote .new-quote-button {
+    background-color: #4cae4c;
+    color: #f5f5f5;
+    font-weight: 700;
+    padding: 20px 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer; }
+
+/*# sourceMappingURL=styles.css.map */
