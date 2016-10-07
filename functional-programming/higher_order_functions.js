@@ -219,3 +219,33 @@ counter2.decrement();
 console.log(counter2.value());
 
 
+//Currying
+
+//Currying is when a function does not take all of its arguments up front
+
+//later
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

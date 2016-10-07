@@ -1,0 +1,6 @@
+mini    sen waffle  iron 80   2
+mini sen    blender 200 1
+mini sen    knife 10 4
+shona sen    waffle 80   2
+shona sen    knife 10 2
+shona sen    pot 20 3

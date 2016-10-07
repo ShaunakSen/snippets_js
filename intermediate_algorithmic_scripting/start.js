@@ -181,4 +181,44 @@ function translatePigLatin(str) {
 
 }
 
+
 console.log(translatePigLatin("algo"));
+
+
+console.log("DNA PAiring...............");
+
+var dna = {
+    "A": "T",
+    "T": "A",
+    "C": "G",
+    "G": "C"
+};
+
+function pairElement(str) {
+    var dnaElements = str.split('');
+
+    var finalDNA = [];
+    for (var x = 0; x < dnaElements.length; ++x){
+        var dnaPair = [];
+        dnaPair.push(dnaElements[x]);
+        dnaPair.push(dna[dnaElements[x]]);
+        finalDNA.push(dnaPair);
+    }
+    return finalDNA;
+}
+
+pairElement("CTCTA");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
