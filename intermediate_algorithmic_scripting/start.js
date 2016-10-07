@@ -88,6 +88,7 @@ function convertToRoman(num) {
 convertToRoman(44);
 console.log(romanStr);
 
+console.log("What is in a name................");
 
 function whatIsInAName(arrayOfObjects, sourceObject) {
     var newArray = arrayOfObjects.filter(function (object, index, array) {
@@ -106,4 +107,78 @@ function whatIsInAName(arrayOfObjects, sourceObject) {
     return newArray;
 }
 
-console.log(whatIsInAName([{"a": 1, "b": 2}, {"a": 1}, {"a": 1, "b": 2, "c": 2}], {"a": 1, "b": 2}));
+console.log(whatIsInAName([{
+    "a": 1,
+    "b": 2
+}, {
+    "a": 1
+}, {
+    "a": 1,
+    "b": 2,
+    "c": 2
+}], {
+    "a": 1,
+    "b": 2
+}));
+
+
+console.log("Search and Replace.............");
+
+
+
+function myReplace(str, before, after) {
+    var firstChar = before.charAt(0);
+    var newAfter = after;
+    if (firstChar.toUpperCase() === firstChar) {
+        newAfter = after.charAt(0).toUpperCase()
+        newAfter += after.slice(1, after.length)
+    }
+    console.log(newAfter);
+    str = str.replace(before, newAfter);
+    return str;
+}
+
+console.log(myReplace("A quick brown fox Jumped over the lazy dog", "jumped", "leaped"));
+
+
+console.log("Pig Latin.....................");
+
+var vowels = ['a', 'e', 'i', 'o', 'u'];
+
+function isConsonant(letter) {
+    for (var x = 0; x < vowels.length; ++x) {
+        if (vowels[x] === letter) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function translatePigLatin(str) {
+    var isVowel = false;
+    var letters = str.split('');
+    var clusterOfConsonants = [];
+    console.log(letters);
+
+    for (var i = 0; i < letters.length; ++i) {
+        if (isConsonant(letters[i])) {
+            clusterOfConsonants.push(letters[i]);
+        } else {
+            break;
+        }
+    }
+
+    //    Check if consonant was found
+    if (clusterOfConsonants.length != 0) {
+        console.log(clusterOfConsonants)
+        var lengthOfCluster = clusterOfConsonants.length;
+        var consonantStr = clusterOfConsonants.join('');
+        str = str.slice(lengthOfCluster, str.length) + consonantStr + "ay";
+    } else {
+        str += "way"
+    }
+    return str;
+
+}
+
+console.log(translatePigLatin("algo"));
