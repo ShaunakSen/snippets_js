@@ -65,8 +65,8 @@ var largestKey = 1;
 
 function convertToRoman(num) {
     // console.log(romanStr)
-    for(variable in romanNumerals){
-        if(variable == num){
+    for (variable in romanNumerals) {
+        if (variable == num) {
             romanStr += romanNumerals[num];
             return;
         }
@@ -89,6 +89,21 @@ convertToRoman(44);
 console.log(romanStr);
 
 
+function whatIsInAName(arrayOfObjects, sourceObject) {
+    var newArray = arrayOfObjects.filter(function (object, index, array) {
+        //console.log(index, object);
+        //We have access to sourceObject here
+        var keys = Object.keys(sourceObject);
+        for (var i = 0; i < keys.length; ++i) {
+            if (!(object.hasOwnProperty(keys[i]) && object[keys[i]] == sourceObject[keys[i]])) {
+                return false;
+            }
+        }
+        return true;
 
 
+    });
+    return newArray;
+}
 
+console.log(whatIsInAName([{"a": 1, "b": 2}, {"a": 1}, {"a": 1, "b": 2, "c": 2}], {"a": 1, "b": 2}));
