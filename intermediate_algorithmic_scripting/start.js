@@ -198,7 +198,7 @@ function pairElement(str) {
     var dnaElements = str.split('');
 
     var finalDNA = [];
-    for (var x = 0; x < dnaElements.length; ++x){
+    for (var x = 0; x < dnaElements.length; ++x) {
         var dnaPair = [];
         dnaPair.push(dnaElements[x]);
         dnaPair.push(dna[dnaElements[x]]);
@@ -210,15 +210,50 @@ function pairElement(str) {
 pairElement("CTCTA");
 
 
+console.log("Missing Letters............")
 
 
 
+function fearNotLetter(str) {
+    var myArray = str.split('');
+
+    myArray = myArray.map(function (value, index) {
+            return value.charCodeAt()
+        })
+        //    console.log(myArray);
+        //    var flag = 0;
+    for (var i = 0; i < myArray.length; ++i) {
+        var diff = myArray[i + 1] - myArray[i];
+        if (diff > 1) {
+            //            flag = 1;
+            return String.fromCharCode(myArray[i + 1] - 1)
+        }
+    }
+    return undefined;
+}
+
+console.log(fearNotLetter("abce"));
 
 
+console.log("Sorted Union..............")
 
+var finalArray = [];
 
+function addToFinalArray(arr){
+    for(var i=0; i<arr.length; ++i){
+        if(!isInArray(arr[i], finalArray)){
+            finalArray.push(arr[i]);
+        }
+    }
+}
 
+function uniteUnique(arr) {
+    var args = Array.from(arguments);
+    for (var i = 0; i < args.length; ++i){
+        var argArray = args[i]
+        addToFinalArray(argArray);
+    }
+    return finalArray;
+}
 
-
-
-
+uniteUnique([1, 2, 3], [5, 2, 1])
