@@ -70,3 +70,57 @@ updateDOM = () => {
 }
 
 updateDOM();
+
+
+//Looping through Arrays
+
+let arr1 = [1, 2, 3, 4, 5, 6];
+
+
+let arr2 = [
+    {
+        name: "mini",
+        age: 20
+    },
+    {
+        name: "shona",
+        age: 23
+    },
+    {
+        name: "drigger",
+        age: 1
+    }
+];
+
+
+const goThroughNames = (arr) => {
+    //    Cache the length
+    const arrLength = arr.length;
+    const list = document.getElementById('names');
+//    for (let i = 0; i < arrLength; ++i) {
+//        let item = document.createElement('li');
+//        item.innerText = arr[i].name + " is " + arr[i].age + " years old";
+//        list.appendChild(item);
+//    }
+
+
+    arr.map((user)=>{
+        let item = document.createElement('li');
+        item.innerText = user.name + " is " + user.age + " years old";
+        list.appendChild(item);
+    });
+
+};
+
+const sumOfArray = (arr) => {
+    let sum = 0;
+    arr.map((number) => {
+        sum += number;
+    });
+
+    document.getElementById('calculate').innerText = sum;
+}
+
+sumOfArray(arr1);
+
+goThroughNames(arr2);
