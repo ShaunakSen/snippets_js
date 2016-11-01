@@ -124,3 +124,49 @@ const sumOfArray = (arr) => {
 sumOfArray(arr1);
 
 goThroughNames(arr2);
+
+
+//For in Loops
+
+
+let sampleObject = {
+    username: "shaunak1105",
+    bio: "something blaah",
+    interests: ["cricket", "harry potter", "movies"],
+    age: 23,
+    weight: 80,
+    gender: "M"
+}
+
+
+const iterator = (obj) => {
+    const keyList = document.getElementById('keys');
+    const valuesList = document.getElementById('values');
+    for(let key in obj){
+        let keyItem = document.createElement('li');
+        keyItem.innerText = key;
+        let valueItem = document.createElement('li');
+        valueItem.innerText = obj[key];
+
+        keyList.appendChild(keyItem);
+        valuesList.appendChild(valueItem);
+    }
+};
+
+
+iterator(sampleObject);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
