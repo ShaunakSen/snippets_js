@@ -1,6 +1,6 @@
 <html>
 
-<body>
+<body style="font-family: monospace;">
     <h1 id="title"></h1>
     <input type="text" id="user-input">
     <button onclick="submitUser('push')">Push</button>
@@ -10,6 +10,20 @@
     <input type="number" id="array-index">
     <button onclick="removeAtIndex()">Remove</button>
     <h3 id="names"></h3>
+
+
+    <input type="text" id="usernameInput" onkeyup="updateUser('usernameInput', 'username')"
+           placeholder="ENTER USERNAME">
+    <input type="number" id="ageInput" onkeyup="updateUser('ageInput', 'age')"
+           placeholder="ENTER AGE">
+    <input type="text" id="bioInput" onkeyup="updateUser('bioInput', 'bio')"
+           placeholder="ENTER BIO">
+    <input type="text" id="locationInput" onkeyup="updateUser('locationInput', 'location')"
+           placeholder="ENTER LOCATION">
+    <h1 id="username"></h1>
+    <h3 id="age"></h3>
+    <h3 id="location"></h3>
+    <p id="bio"></p>
     <script src="start.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 </body>

@@ -24,16 +24,13 @@ const submitUser = (actionType) => {
 }
 
 const editArray = (actionType, data) => {
-    if(actionType === 'push'){
+    if (actionType === 'push') {
         namesArr.push(data);
-    }
-    else if (actionType === 'unshift'){
+    } else if (actionType === 'unshift') {
         namesArr.unshift(data);
-    }
-    else if(actionType === 'pop'){
+    } else if (actionType === 'pop') {
         namesArr.pop();
-    }
-    else if(actionType === 'shift'){
+    } else if (actionType === 'shift') {
         namesArr.shift();
     }
 }
@@ -45,3 +42,31 @@ const removeAtIndex = () => {
     document.getElementById('names').innerText = namesArr;
 
 }
+
+
+let user = {
+    username: "Please enter your username",
+    age: 20,
+    bio: "Please enter bio",
+    location: "Please enter a location"
+};
+
+
+updateUser = (field, id) => {
+
+    var input = document.getElementById(field).value;
+    console.log(input)
+    user[id] = input;
+    updateDOM();
+}
+
+
+updateDOM = () => {
+    //    Set values here
+    document.getElementById('username').innerText = user.username;
+    document.getElementById('age').innerText = user.age;
+    document.getElementById('bio').innerText = user.bio;
+    document.getElementById('location').innerText = user.location;
+}
+
+updateDOM();
