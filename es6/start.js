@@ -97,14 +97,14 @@ const goThroughNames = (arr) => {
     //    Cache the length
     const arrLength = arr.length;
     const list = document.getElementById('names');
-//    for (let i = 0; i < arrLength; ++i) {
-//        let item = document.createElement('li');
-//        item.innerText = arr[i].name + " is " + arr[i].age + " years old";
-//        list.appendChild(item);
-//    }
+    //    for (let i = 0; i < arrLength; ++i) {
+    //        let item = document.createElement('li');
+    //        item.innerText = arr[i].name + " is " + arr[i].age + " years old";
+    //        list.appendChild(item);
+    //    }
 
 
-    arr.map((user)=>{
+    arr.map((user) => {
         let item = document.createElement('li');
         item.innerText = user.name + " is " + user.age + " years old";
         list.appendChild(item);
@@ -142,7 +142,7 @@ let sampleObject = {
 const iterator = (obj) => {
     const keyList = document.getElementById('keys');
     const valuesList = document.getElementById('values');
-    for(let key in obj){
+    for (let key in obj) {
         let keyItem = document.createElement('li');
         keyItem.innerText = key;
         let valueItem = document.createElement('li');
@@ -157,16 +157,59 @@ const iterator = (obj) => {
 iterator(sampleObject);
 
 
+let player = {
+    health: 100,
+    power: 20
+};
+
+let opponent = {
+    health: 100,
+    power: 20
+};
+
+const attack = () => {
+    let attackButton = document.getElementById('attack-button');
+    let gameMessage = document.getElementById('game-message');
+    let playerAttack = determineAttack(player.power);
+    //    console.log(playerAttack);
+    opponent.health -= playerAttack;
+    printToScreen();
+    if (isGameOver(opponent.health)) {
+        console.log("here")
+        gameMessage.innerText = "Player won fight";
+        attackButton.disabled = true;
+        return;
+    }
+    //    disable attack button
+    attackButton.disabled = true;
+    gameMessage.innerText = "Opponent is about to strike!!";
+
+    setTimeout(() => {
+        let opponentAttack = determineAttack(opponent.power);
+        player.health -= opponentAttack;
+        printToScreen();
+        if (isGameOver(player.health)) {
+            gameMessage.innerText = "Opponent won fight";
+            attackButton.disabled = true;
+            return;
+        }
+        attackButton.disabled = false;
+    }, 250);
+
+};
+
+const determineAttack = (power) => {
+    return Math.floor(Math.random() * power);
+};
+
+const isGameOver = (health) => {
+    return health <= 0;
+}
 
 
+const printToScreen = () => {
+    document.getElementById('opponent-health').innerText = opponent.health;
+    document.getElementById('player-health').innerText = player.health;
+};
 
-
-
-
-
-
-
-
-
-
-
+printToScreen();
