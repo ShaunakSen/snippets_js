@@ -1,15 +1,15 @@
 
-var input; 
+var textField; 
 
 function setup(){
     noCanvas();
-    input = createInput();
+    textField = createInput();
     
-    input.changed(newText);
+    textField.changed(newText);
 }
 
 function newText(){
-    createP(input.value());
-    console.log(input.value());
+    createP(textField.value());
+    console.log(textField.value());
 }
 
