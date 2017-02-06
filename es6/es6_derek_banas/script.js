@@ -188,32 +188,107 @@ let val1 = 1,
 
 document.write(`val1: ${val1}, val2: ${val2}<br/>`);
 
+//Classes
+
+document.write("<h2>Classes</h2>");
+
+class Mammal {
+
+    //    constructor
+    constructor(name) {
+        this._name = name;
+    }
+
+    //    getter
+    get name() {
+        return this._name;
+    }
+
+    //    setter
+    set name(name) {
+            this._name = name;
+        }
+        //    static method
+        //    create a mamal object using static method
+    static makeMammal(name) {
+        return new Mammal(name);
+    }
+
+    //    regular method
+    getInfo() {
+        return `${this.name} is a Mammal`;
+    }
+}
+
+let monkey = new Mammal("Fred");
+
+//use the setter
+monkey.name = 'Mark';
+
+//use the getter
+
+document.write(`Mammal: ${monkey.name}</br>`);
+
+//use static function
+
+let chipmunk = Mammal.makeMammal("Chipper");
+
+document.write(`Chipmunk: ${chipmunk.getInfo()}</br>`);
+
+//Inheritence
+
+class Marsupial extends Mammal {
+    //    new constructor
+
+    constructor(name, hasPouch) {
+        //        calling constructor for Mammal class
+        //        super constructor takes care of the name
+        super(name);
+        this._hasPouch = hasPouch;
+
+    }
+
+    //    define getters and setters for hasPouch
+    //    no need to define getters and setters for name as they are inherited
+
+    get hasPouch() {
+        return this._hasPouch;
+    }
+    set hasPouch(hasPouch) {
+        this._hasPouch = hasPouch;
+    }
+
+    //    override method
+
+    getInfo() {
+        return `${this.name} is a Marsupial`;
+    }
+
+}
+
+let kangaroo = new Marsupial("Paul", true);
+
+document.write(`It is ${kangaroo.hasPouch} that ${kangaroo.name} has pouch</br>`);
+
+document.write(`${kangaroo.getInfo()}</br>`);
+
+//Dynamically inherit from classes
 
 
+function getClass(classType) {
+    if (classType == 1) {
+        return Mammal;
+    } else {
+        return Marsupial;
+    }
+}
 
+class Koala extends getClass(2) {
+    constructor(name) {
+        super(name);
+    }
+}
 
+let carl = new Koala("Carl");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+document.write(`${carl.getInfo()}</br>`);
