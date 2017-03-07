@@ -292,3 +292,8 @@ class Koala extends getClass(2) {
 let carl = new Koala("Carl");
 
 document.write(`${carl.getInfo()}</br>`);
+
+
+
+
+
