@@ -1,0 +1,10 @@
+.video-thumbnail{
+    padding: 20px;
+    border: 3px solid black;
+    margin: 20px;
+    background-color: black;
+}
+.video-thumbnail img{
+    height: 300px;
+    width: 400px;
+}

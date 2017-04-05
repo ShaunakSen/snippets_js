@@ -6,7 +6,8 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    $('#submit-button').click(function () {
+    $('#submit-button').click(function (e) {
+        e.preventDefault();
         search();
     })
 });
@@ -28,6 +29,7 @@ function search() {
             part: 'snippet, id',
             q: query,
             type: 'video',
+            maxResults: 10,
             key: apiKey
         },
         function (data) {
@@ -53,6 +55,14 @@ function buildOutput(item) {
     var channelTitle = item.snippet.channelTitle;
     var videoDate = item.snippet.publishedAt;
 
-
+    return `<div class="col-md-5 video-thumbnail">
+                    <iframe width="440" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                    <hr>
+                    <h4>${title}</h4>
+                    <p>${description}</p>
+                    <hr>
+                    <p>Published By: ${channelTitle}</p>
+                    <p>Published On: ${videoDate}</p>
+                </div>`;
 }
 
