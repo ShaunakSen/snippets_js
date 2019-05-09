@@ -240,6 +240,47 @@ function populateListingData(num_listings){
 // populate listing data randomly
 populateListingData(20);
 
+var total_crime_for_region = 0;
+
+var total_number_of_crimes_in_region = 0;
+
+listings_data.forEach(listing => {
+  var crime_for_listing = 0
+  console.log(listing)
+  for(var crime_category in listing){
+    var crime_weight = crime_data_processed[crime_category];
+    var crime_count = listing[crime_category];
+    total_crime_for_region += crime_weight*crime_count;
+    crime_for_listing += crime_weight*crime_count;
+    total_number_of_crimes_in_region += crime_count;
+    // console.log(crime_category, crime_weight, crime_count);
+  }
+  // total crime for entire region updated
+  // crime for this listing finalized
+  listing['crime_estimate'] = crime_for_listing;
+});
+
+console.log(listings_data)
+
+console.log(total_crime_for_region, total_number_of_crimes_in_region);
+
+
+
+var check_total=0
+
+listings_data.forEach(listing => {
+  check_total += listing['crime_estimate']
+});
+
+console.log(Math.round(check_total) == Math.round(total_crime_for_region))
+
+var region_crime_overall = total_crime_for_region/(total_number_of_crimes_in_region*crime_data_processed['all-crime'])
+
+console.log("Overall crime in region:", region_crime_overall)
+
+
+
+
 
 
 
