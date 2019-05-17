@@ -10,8 +10,10 @@ Overview of the ranking process
 7. A region consists of many listings. For each listing, the freq of a particular crime category is multiplied by the Severity Score for that crime category
 8. This gives us a weighted measure of the crime in that listing
 9. The sum of the weighted measures of the crime for each listing gives us an est of crime for overall reg
-10. For each listing [1-(weighted measure of the crime in that listing)/(total crime in the region)]*100 gives a safety score for the particular listing
-11. Additionally (est of crime for overall reg)/(number of crimes in region * wt of "all-crime") gives us an estimate of crime in the region overall 
+10. We compute crime_contribution for each listing as crime_estimate*100/total crime of region
+11. safety_score for each listing = 100-crime_contribution for each listing
+12. Normalize safety score acc to max safety for that region
+13. Normalize safety score acc to overall crime in the region
 */
 
 
@@ -242,7 +244,7 @@ function processCrimeData(method='mean'){
 
   });
 }
-processCrimeData('mean');
+
 
 // function to randomly generate listings data
 function populateListingData(num_listings){
@@ -256,134 +258,136 @@ function populateListingData(num_listings){
   }
 }
 
-// populate listing data randomly
-populateListingData(5);
-
-
-
-var total_crime_for_region = 0;
-var total_number_of_crimes_in_region = 0;
-
-
-// for each listing
-listings_data.forEach(listing => {
-
-  // set crime est of listing to 0
-
-  var crime_for_listing = 0
-  // for each crime category in listing
-  for(var crime_category in listing){
-    // get wt of that crime category
-    var crime_weight = crime_data_processed[crime_category];
-    // get freq of the crime cat
-    var crime_count = listing[crime_category];
-    // add to total crime est of region
-    total_crime_for_region += crime_weight*crime_count;
-    // add to total crime est of listing
-    crime_for_listing += crime_weight*crime_count;
-
-    
-    total_number_of_crimes_in_region += crime_count;
-  }
-  // total crime for entire region updated
-  // crime for this listing finalized
-  listing['crime_estimate'] = crime_for_listing;
-});
-
-//console.log(listings_data)
-
-console.log(total_crime_for_region, total_number_of_crimes_in_region);
-
-
-// sanitary check
-
-var check_total=0
-
-listings_data.forEach(listing => {
-  check_total += listing['crime_estimate']
-});
-
-console.log(Math.round(check_total) == Math.round(total_crime_for_region))
-
-
-// get safety est of region overall
-var region_crime_overall = total_crime_for_region/(total_number_of_crimes_in_region*crime_data_processed['all-crime'])
-
-console.log("Overall crime in region:", region_crime_overall)
-
-
-// calculate safety score for each listing  
-
-var acceptabe_perc = 100/listings_data.length;
-
-
-
-listings_data.forEach(listing => {
-  var crime_score = listing['crime_estimate']*100/total_crime_for_region
-  listing['crime_contribution'] = crime_score
-});
-
-
-
-console.log(listings_data);
-
-var safety_contributions = []
-
-
-for (var i=0; i<listings_data.length; ++i){
-  safety_contributions.push(100 - listings_data[i]['crime_contribution'])
-}
-
-console.log(safety_contributions)
-
-
-// calculating safety scores
-
-var max_safety_perc = Math.max.apply(null, safety_contributions)
-
-var safety_scores = []
-
-for (var i=0; i<safety_contributions.length; ++i){
-  safety_scores.push((100/max_safety_perc)*safety_contributions[i])
-}
-
-console.log(safety_scores)
-
-// log these safety scores into the main listings obj
-
-for (var i=0; i<listings_data.length; ++i){
-  listings_data[i]['safety_score'] = safety_scores[i]
-}
-
-console.log(listings_data)
-
-// the current safety scores are relative to the current region
-
-// normalize them by the overall safety of the region
-
-var region_safety_metadata = [0.5, 0.6]
-
-listings_data.forEach(listing => {
-  if (region_crime_overall < region_safety_metadata[0]){
-    // very safe region
-    listing['safety_score_normalized'] = listing['safety_score']
-  }
-  else if (region_crime_overall > region_safety_metadata[0] && region_crime_overall < region_safety_metadata[1]){
-    // medium safe
-    listing['safety_score_normalized'] = listing['safety_score'] - 5;
-  }
-  else {
-    // unsafe
-    listing['safety_score_normalized'] = listing['safety_score'] - 10;
-  }
-});
-
-console.log(listings_data)
 
 
 function rankingAlgorithm(){
-  
+
+  // process crime data: calculate central measure of each wt
+  processCrimeData('mean');
+
+  // populate listing data randomly
+  populateListingData(5);
+
+  var total_crime_for_region = 0;
+  var total_number_of_crimes_in_region = 0;
+
+
+  // calculate crime estimate for each listing and total crime in region
+
+  listings_data.forEach(listing => {
+
+    // set crime est of listing to 0
+
+    var crime_for_listing = 0
+    // for each crime category in listing
+    for(var crime_category in listing){
+      // get wt of that crime category
+      var crime_weight = crime_data_processed[crime_category];
+      // get freq of the crime cat
+      var crime_count = listing[crime_category];
+      // add to total crime est of region
+      total_crime_for_region += crime_weight*crime_count;
+      // add to total crime est of listing
+      crime_for_listing += crime_weight*crime_count;
+
+      
+      total_number_of_crimes_in_region += crime_count;
+    }
+    // total crime for entire region updated
+    // crime for this listing finalized
+    listing['crime_estimate'] = crime_for_listing;
+  });
+
+  console.log(total_crime_for_region, total_number_of_crimes_in_region);
+
+
+  // sanitary check
+
+  var check_total=0
+
+  listings_data.forEach(listing => {
+    check_total += listing['crime_estimate']
+  });
+
+  console.log(Math.round(check_total) == Math.round(total_crime_for_region))
+
+
+  // get crime est of region overall
+  var region_crime_overall = total_crime_for_region/(total_number_of_crimes_in_region*crime_data_processed['all-crime'])
+
+  console.log("Overall crime in region:", region_crime_overall)
+
+
+  // calculate crime contribution for each listing  
+
+
+  listings_data.forEach(listing => {
+    var crime_score = listing['crime_estimate']*100/total_crime_for_region
+    listing['crime_contribution'] = crime_score
+  });
+
+
+
+  console.log(listings_data);
+
+  var safety_contributions = []
+
+  // safety_contribution = 100 - crime_contribution
+
+  for (var i=0; i<listings_data.length; ++i){
+    safety_contributions.push(100 - listings_data[i]['crime_contribution'])
+  }
+
+  console.log(safety_contributions)
+
+
+  // get max safety_score
+
+  var max_safety_perc = Math.max.apply(null, safety_contributions)
+
+  // normalize safety score
+
+  var safety_scores = []
+
+  for (var i=0; i<safety_contributions.length; ++i){
+    safety_scores.push((100/max_safety_perc)*safety_contributions[i])
+  }
+
+  console.log(safety_scores)
+
+  // log these safety scores into the main listings obj
+
+  for (var i=0; i<listings_data.length; ++i){
+    listings_data[i]['safety_score'] = safety_scores[i]
+  }
+
+  console.log(listings_data)
+
+  // the current safety scores are relative to the current region
+
+  // normalize them by the overall safety of the region
+
+  var region_safety_metadata = [0.5, 0.6]
+
+  listings_data.forEach(listing => {
+    if (region_crime_overall < region_safety_metadata[0]){
+      // very safe region
+      listing['safety_score_normalized'] = listing['safety_score']
+    }
+    else if (region_crime_overall > region_safety_metadata[0] && region_crime_overall < region_safety_metadata[1]){
+      // medium safe
+      listing['safety_score_normalized'] = listing['safety_score'] - 5;
+    }
+    else {
+      // unsafe
+      listing['safety_score_normalized'] = listing['safety_score'] - 10;
+    }
+  });
+
+  console.log(listings_data);
 }
+
+rankingAlgorithm();
 
 
 
